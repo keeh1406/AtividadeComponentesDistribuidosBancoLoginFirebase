@@ -23,6 +23,14 @@
           }
         },
         {
+          "client_id": "644133227988-68kbgl145ohvk072fvnb00cjj5nb4fg9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.opet.loginfirebase",
+            "certificate_hash": "bae20ae7b6ded888af2f27a1eaaa810769f060a2"
+          }
+        },
+        {
           "client_id": "644133227988-nts0aiil2dkme3e5blegipi24qk6b4k5.apps.googleusercontent.com",
           "client_type": 3
         }

@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/LoginFirebase.iml" filepath="$PROJECT_DIR$/LoginFirebase.iml" />
+      <module fileurl="file://$PROJECT_DIR$/AtividadeComponentesDistribuidosLoginFirebase.iml" filepath="$PROJECT_DIR$/AtividadeComponentesDistribuidosLoginFirebase.iml" />
+      <module fileurl="file://C:\Users\opet\Documents\GitHub\AtividadeComponentesDistribuidosLoginFirebase\LoginFirebase.iml" filepath="C:\Users\opet\Documents\GitHub\AtividadeComponentesDistribuidosLoginFirebase\LoginFirebase.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://C:\Users\opet\Documents\GitHub\AtividadeComponentesDistribuidosLoginFirebase\app\app.iml" filepath="C:\Users\opet\Documents\GitHub\AtividadeComponentesDistribuidosLoginFirebase\app\app.iml" />
     </modules>
   </component>
 </project>
