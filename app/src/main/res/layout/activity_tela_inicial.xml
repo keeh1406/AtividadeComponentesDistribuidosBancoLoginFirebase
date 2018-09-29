@@ -17,23 +17,54 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-    <Button
+    <EditText
+        android:id="@editNome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Salvar"
-        android:onClick="salvarCarro" />
+        android:ems="10"
+        android:inputType="TextPersonName"/>
 
-    <ProgressBar
-        android:id="@+id/pbSalvar"
-        android:visibility="gone"
-        android:layout_gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+    <EditText
+        android:id="@+id/editNome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="TextPersonName"
+        android:hint="Nome"/>
+
+    <EditText
+        android:id="@+id/editNascimento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="TextPersonNascimento"
+        android:hint="Data de Nascimento"/>
+
+    <EditText
+        android:id="@+id/editIdioma"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="TextPersonIdioma"
+        android:hint="Idioma"/>
+
+    <EditText
+        android:id="@+id/editGraduacao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="TextPersonGraduacao"
+        android:hint="Graduação"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Sair"
         android:onClick="Sair" />
+
+    <ListView
+        android:id="@+id/listView_dados"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
 </LinearLayout>
