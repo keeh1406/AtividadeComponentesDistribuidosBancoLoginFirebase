@@ -9,11 +9,11 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item android:id="@+id/menu_atualizar"
         android:title="Atualizar"
-        android:icon="@drawable/ic_novo"
+        android:icon="@drawable/ic_atualizar"
         app:showAsAction="always"/>
 
     <item android:id="@+id/menu_deletar"
         android:title="Deletar"
-        android:icon="@drawable/ic_novo"
+        android:icon="@drawable/ic_deletar"
         app:showAsAction="always"/>
 </menu>
