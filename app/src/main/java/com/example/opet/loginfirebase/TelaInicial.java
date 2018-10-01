@@ -189,7 +189,7 @@ public class TelaInicial extends AppCompatActivity {
         int id = item.getItemId();
         if(id == R.id.menu_novo){
             Pessoa p = new Pessoa();
-            p.setId(Integer.parseInt(UUID.randomUUID().toString()));
+            p.setId(UUID.randomUUID().toString());
             p.setNome(editNome .getText().toString());
             p.setIdioma(editIdioma.getText().toString());
             p.setGraduacao(editGraduacao.getText().toString());

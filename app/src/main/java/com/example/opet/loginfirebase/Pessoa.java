@@ -7,7 +7,7 @@ import java.util.Date;
  */
 
 public class Pessoa {
-    private int id;
+    private String id;
     private String nome;
     private Date nascimento;
     private String graduacao;
@@ -16,7 +16,7 @@ public class Pessoa {
     public Pessoa() {
     }
 
-    public Pessoa(int id, String nome, Date nascimento, String graduacao, String idioma) {
+    public Pessoa(String id, String nome, Date nascimento, String graduacao, String idioma) {
         this.id = id;
         this.nome = nome;
         this.nascimento = nascimento;
@@ -24,11 +24,11 @@ public class Pessoa {
         this.idioma = idioma;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
