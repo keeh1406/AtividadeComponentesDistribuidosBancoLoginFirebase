@@ -37,6 +37,11 @@ import java.util.UUID;
 public class TelaInicial extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
+
+    private ImageView imgSelected;
+    private StorageReference mStorageRef;
+    private ArrayList<String> photos;
+
     EditText editNome, editIdioma, editGraduacao, editNascimento;
     ListView listV_dados;
 
@@ -52,6 +57,11 @@ public class TelaInicial extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_inicial);
+
+        photos = new ArrayList<>();
+        imgSelected = findViewById(R.id.imgSelected);
+        mStorageRef = FirebaseStorage.getInstance().getReference();
+
         pbSalvar = findViewById(R.id.pbSalvar);
         editNome = (EditText)findViewById(R.id.editNome);
         editIdioma = (EditText)findViewById(R.id.editIdioma);
@@ -80,6 +90,52 @@ public class TelaInicial extends AppCompatActivity {
         TextView emailUser = findViewById(R.id.email);
         emailUser.setText("Bem vindo, " + emailCurrent);
 
+    }
+
+    public void photoPickerFunction(View view){
+        PhotoPicker.builder()
+                .setPhotoCount(1)
+                .setShowCamera(true)
+                .setShowGif(true)
+                .setPreviewEnabled(false)
+                .start(this, PhotoPicker.REQUEST_CODE);
+    }
+
+    @Override protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode == RESULT_OK && requestCode == PhotoPicker.REQUEST_CODE) {
+            if (data != null) {
+                photos = data.getStringArrayListExtra(PhotoPicker.KEY_SELECTED_PHOTOS);
+                imgSelected.setImageURI(Uri.parse(photos.get(0)));
+            }
+        }
+    }
+
+    private void resetForm(){
+        photos.clear();
+        imgSelected.setImageResource(0);
+    }
+
+    public void sendPhotoFunction(View view) {
+        if(photos.size() > 0){
+            Uri file = Uri.fromFile(new File(photos.get(0)));
+            StorageReference photoRef = mStorageRef.child("images");
+            photoRef.putFile(file).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    Toast.makeText(MainActivity.this, "Arquivo Enviado com sucesso!", Toast.LENGTH_SHORT).show();
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(MainActivity.this, "Falha ao enviar arquivo.", Toast.LENGTH_SHORT).show();
+                }
+            });
+            resetForm();
+        }else{
+            Toast.makeText(this, "Nenhum arquivo carregado.", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void inicializarFirebase() {

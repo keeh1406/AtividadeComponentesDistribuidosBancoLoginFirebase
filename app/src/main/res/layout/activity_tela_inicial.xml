@@ -57,6 +57,24 @@
         android:hint="Graduação"/>
 
     <Button
+        android:onClick="photoPickerFunction"
+        android:id="@+id/btnFoto"
+        android:text="Selecionar Foto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <Button
+        android:onClick="sendPhotoFunction"
+        android:id="@+id/btnEnviar"
+        android:text="Enviar Foto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <ImageView
+        android:layout_gravity="center"
+        android:id="@+id/imgSelected"
+        android:layout_width="100dp"
+        android:layout_height="100dp" />
+
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Sair"
