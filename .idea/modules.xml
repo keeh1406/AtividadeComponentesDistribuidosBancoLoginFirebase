@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/AtividadeComponentesDistribuidosBancoLoginFirebase-master.iml" filepath="$PROJECT_DIR$/AtividadeComponentesDistribuidosBancoLoginFirebase-master.iml" />
+      <module fileurl="file://$PROJECT_DIR$/AtividadeComponentesDistribuidosBancoLoginFirebase.iml" filepath="$PROJECT_DIR$/AtividadeComponentesDistribuidosBancoLoginFirebase.iml" />
       <module fileurl="file://C:\Users\Katia Magareth\Downloads\AtividadeComponentesDistribuidosBancoLoginFirebase-master\AtividadeComponentesDistribuidosBancoLoginFirebase-master\AtividadeComponentesDistribuidosLoginFirebase.iml" filepath="C:\Users\Katia Magareth\Downloads\AtividadeComponentesDistribuidosBancoLoginFirebase-master\AtividadeComponentesDistribuidosBancoLoginFirebase-master\AtividadeComponentesDistribuidosLoginFirebase.iml" />
       <module fileurl="file://C:\Users\opet\Documents\GitHub\AtividadeComponentesDistribuidosLoginFirebase\LoginFirebase.iml" filepath="C:\Users\opet\Documents\GitHub\AtividadeComponentesDistribuidosLoginFirebase\LoginFirebase.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />

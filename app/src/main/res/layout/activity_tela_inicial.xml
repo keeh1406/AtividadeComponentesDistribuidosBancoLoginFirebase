@@ -18,26 +18,17 @@
         android:layout_height="wrap_content" />
 
     <EditText
-        android:id="@editNome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="TextPersonName"/>
-
-    <EditText
         android:id="@+id/editNome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="TextPersonName"
-        android:hint="Nome"/>
+        android:hint="Nome"
+        android:ems="10"/>
 
     <EditText
         android:id="@+id/editNascimento"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="TextPersonNascimento"
         android:hint="Data de Nascimento"/>
 
     <EditText
@@ -45,7 +36,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="TextPersonIdioma"
         android:hint="Idioma"/>
 
     <EditText
@@ -53,7 +43,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="TextPersonGraduacao"
         android:hint="Graduação"/>
 
     <Button

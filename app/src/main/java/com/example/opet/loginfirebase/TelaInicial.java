@@ -1,6 +1,7 @@
 package com.example.opet.loginfirebase;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -10,12 +11,15 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
@@ -26,9 +30,16 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
+import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
+
+import me.iwf.photopicker.PhotoPicker;
 
 /**
  * Created by opet on 21/08/2018.
@@ -62,19 +73,18 @@ public class TelaInicial extends AppCompatActivity {
         imgSelected = findViewById(R.id.imgSelected);
         mStorageRef = FirebaseStorage.getInstance().getReference();
 
-        pbSalvar = findViewById(R.id.pbSalvar);
         editNome = (EditText)findViewById(R.id.editNome);
         editIdioma = (EditText)findViewById(R.id.editIdioma);
         editGraduacao = (EditText)findViewById(R.id.editGraduacao);
         editNascimento = (EditText)findViewById(R.id.editNascimento);
-        listV_dados = (ListView)findViewById(R.id.listV_dados);
+        listV_dados = (ListView)findViewById(R.id.listView_dados);
 
         inicializarFirebase();
         eventoDataBase();
 
         listV_dados.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+            public void onItemClick(AdapterView<?> parent, View view, int i, long l) {
                 pessoaSelecionada = (Pessoa)parent.getItemAtPosition(i);
                 editNome.setText(pessoaSelecionada.getNome());
                 editGraduacao.setText(pessoaSelecionada.getGraduacao());
@@ -124,12 +134,12 @@ public class TelaInicial extends AppCompatActivity {
             photoRef.putFile(file).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    Toast.makeText(MainActivity.this, "Arquivo Enviado com sucesso!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(TelaInicial.this, "Arquivo Enviado com sucesso!", Toast.LENGTH_SHORT).show();
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(MainActivity.this, "Falha ao enviar arquivo.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(TelaInicial.this, "Falha ao enviar arquivo.", Toast.LENGTH_SHORT).show();
                 }
             });
             resetForm();
@@ -180,31 +190,31 @@ public class TelaInicial extends AppCompatActivity {
         if(id == R.id.menu_novo){
             Pessoa p = new Pessoa();
             p.setId(Integer.parseInt(UUID.randomUUID().toString()));
-            p.setNome(EditNome.getText().toString());
-            p.setIdioma(EditIdioma.getText().toString());
-            p.setGraduacao(EditGraduacao.getText().toString());
-            p.setNascimento(EditNascimento.getText().toString());
+            p.setNome(editNome .getText().toString());
+            p.setIdioma(editIdioma.getText().toString());
+            p.setGraduacao(editGraduacao.getText().toString());
+            // p.setNascimento(editNascimento.getText().toString());
             databaseReference.child("Pessoa").child(String.valueOf(p.getId())).setValue(p);
             limparCampos();
         }
         else
-            if (id == R.id.menu_atualiza)
+            if (id == R.id.menu_atualizar)
             {
                 Pessoa p = new Pessoa();
                 p.setId(pessoaSelecionada.getId());
                 p.setNome(editNome.getText().toString().trim());
-                p.setNascimento(editNascimento.getText().toString().trim());
+                //p.setNascimento(editNascimento.getText().toString().trim());
                 p.setGraduacao(editGraduacao.getText().toString().trim());
                 p.setIdioma(editIdioma.getText().toString().trim());
                 databaseReference.child("Pessoa").child(String.valueOf(p.getId())).setValue(p);
                 limparCampos();
             }
             else
-                if (id == R.id.menu_deleta)
+                if (id == R.id.menu_deletar)
                 {
                     Pessoa p = new Pessoa();
                     p.setId(pessoaSelecionada.getId());
-                    databaseReference.child("Pessoa").child(p.getId().removeValue());
+                    databaseReference.child("Pessoa").child(String.valueOf(p.getId())).removeValue();
                 }
         return true;
     }
